@@ -1,0 +1,1341 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="谓词逻辑 一.语法构成 1. 为什么要引入一阶谓词逻辑？ 命题逻辑虽然严密，但在表达能力上有局限性 。  局限性：命题逻辑将命题视为不可分割的整体，无法表达个体（Individual）、全体（Universe）以及个体间的逻辑关系 。 经典案例：亚里士多德的“三段论”（如：苏格拉底是要死的）在命题逻辑中只能表示为互不相关的原子命题，无法体现其内在推理逻辑 。   2. 基本构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散数学：谓词逻辑">
+<meta property="og:url" content="http://example.com/2026/03/28/pro_logic_2_%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="谓词逻辑 一.语法构成 1. 为什么要引入一阶谓词逻辑？ 命题逻辑虽然严密，但在表达能力上有局限性 。  局限性：命题逻辑将命题视为不可分割的整体，无法表达个体（Individual）、全体（Universe）以及个体间的逻辑关系 。 经典案例：亚里士多德的“三段论”（如：苏格拉底是要死的）在命题逻辑中只能表示为互不相关的原子命题，无法体现其内在推理逻辑 。   2. 基本构">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image.png">
+<meta property="article:published_time" content="2026-03-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-28T09:37:43.794Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="谓词逻辑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/image.png">
+  
+  
+  
+  <title>离散数学：谓词逻辑 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="离散数学：谓词逻辑"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-28 00:00" pubdate>
+          March 28, 2026 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          43 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">离散数学：谓词逻辑</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="谓词逻辑">谓词逻辑</h1>
+<h2 id="一.语法构成">一.语法构成</h2>
+<h3 id="为什么要引入一阶谓词逻辑">1. 为什么要引入一阶谓词逻辑？</h3>
+<p>命题逻辑虽然严密，但在表达能力上有局限性 。</p>
+<ul>
+<li><strong>局限性</strong>：命题逻辑将命题视为不可分割的整体，无法表达<strong>个体（Individual）</strong>、<strong>全体（Universe）以及个体间的逻辑关系</strong>
+。</li>
+<li><strong>经典案例</strong>：亚里士多德的“三段论”（如：苏格拉底是要死的）在命题逻辑中只能表示为互不相关的原子命题，无法体现其内在推理逻辑
+。</li>
+</ul>
+<hr />
+<h3 id="基本构成谓词-predicate">2. 基本构成：谓词 (Predicate)</h3>
+<p>谓词用于描述个体的性质或个体间的关系 。+1</p>
+<ul>
+<li><strong>一元谓词</strong>：表达个体的<strong>性质</strong>（如：<span
+class="math inline"><em>H</em>(<em>x</em>)</span> 表示 <span
+class="math inline"><em>x</em></span> 是人） 。</li>
+<li><strong>多元谓词</strong>：表达个体间的<strong>关系</strong>（如：<span
+class="math inline"><em>L</em>(<em>x</em>, <em>y</em>)</span> 表示 <span
+class="math inline"><em>x</em></span> 喜欢 <span
+class="math inline"><em>y</em></span>） 。</li>
+<li><strong>零元谓词</strong>：等同于命题逻辑中的命题符号 。</li>
+</ul>
+<hr />
+<h3 id="语法-syntax-的形式定义">3. 语法 (Syntax) 的形式定义</h3>
+<p>一阶语言 <span class="math inline"><em>L</em></span> 由以下七部分组成
+：</p>
+<ol type="1">
+<li><strong>逻辑联结词</strong>：<span
+class="math inline">¬,∧, ∨, →,↔︎</span> 。</li>
+<li><strong>量词符号</strong>：全称量词 <span
+class="math inline">∀</span> (Forall) 与 存在量词 <span
+class="math inline">∃</span> (Exists) 。</li>
+<li><strong>变元符号</strong>：<span
+class="math inline"><em>x</em>, <em>y</em>, <em>z</em>, …</span> 。</li>
+<li><strong>常数符号</strong>：表示具体的个体，如 <span
+class="math inline"><em>a</em>, <em>b</em>, <em>c</em></span> 或数字
+<span class="math inline">0</span> 。</li>
+<li><strong>函数符号</strong>：表达个体上的运算，如 <span
+class="math inline"><em>f</em>(<em>x</em>), +</span> 。</li>
+<li><strong>谓词符号</strong>：<span
+class="math inline"><em>P</em>, <em>Q</em>, <em>R</em>, …</span> 。</li>
+<li><strong>辅助符号</strong>：左右括号 。</li>
+</ol>
+<hr />
+<h3 id="项与公式-terms-and-formulas">4. 项与公式 (Terms and
+Formulas)</h3>
+<p>这是构建逻辑表达式的基石：</p>
+<ol type="1">
+<li>项 (Term)</li>
+</ol>
+<p>项是一阶逻辑讨论的<strong>个体对象</strong>，它本身没有真假 。</p>
+<ul>
+<li>定义：变元是项；常数是项；函数的嵌套结果 <span
+class="math inline"><em>f</em>(<em>t</em><sub>1</sub>, …, <em>t</em><sub><em>n</em></sub>)</span>
+也是项 。</li>
+<li>例子：在数论语言中，<span
+class="math inline"><em>x</em>, 0, <em>x</em> + <em>S</em>0</span>
+都是项 。</li>
+</ul>
+<ol start="2" type="1">
+<li>合式公式 (Well-formed Formula, WFF)</li>
+</ol>
+<p>公式刻画性质或关系，具有<strong>真假语义</strong> 。</p>
+<ul>
+<li><strong>原子公式</strong>：谓词作用于项，如 <span
+class="math inline"><em>P</em>(<em>t</em><sub>1</sub>, …, <em>t</em><sub><em>n</em></sub>)</span>
+。</li>
+<li><strong>复合公式</strong>：通过联结词或量词嵌套形成，如 <span
+class="math inline">(∀<em>x</em><em>α</em>)</span> 或 <span
+class="math inline">(<em>α</em> ∧ <em>β</em>)</span> 。</li>
+<li><strong>管辖约定</strong>：量词的管辖范围通常尽可能短。例如 <span
+class="math inline">∀<em>x</em><em>α</em> → <em>β</em></span> 默认为
+<span class="math inline">(∀<em>x</em><em>α</em>) → <em>β</em></span>
+。</li>
+</ul>
+<h3 id="混淆概念解析">5. 混淆概念解析</h3>
+<ol type="1">
+<li><strong>项</strong>：指具体对象，是逻辑世界里的“名词”。
+<ul>
+<li><span class="math inline">¬<em>x</em></span> 或 <span
+class="math inline">∀<em>x</em>(<em>y</em>)</span>
+在语法上是非法的，因为 <span class="math inline"><em>x</em></span> 和
+<span class="math inline"><em>y</em></span> 只是“项”，没有真假 。</li>
+</ul></li>
+<li><strong>公式</strong>：指性质或关系，是逻辑世界里的“句子”，具有真假属性。
+<ul>
+<li>逻辑联结词和量词的作用是把一个或多个句子组合成更复杂的句子，当你把这些符号作用于原子公式时，它确实就演变成了复合公式（或称合式公式）
+。</li>
+</ul></li>
+</ol>
+<h3 id="逻辑翻译">6.逻辑翻译</h3>
+<p>|表达对象|一阶逻辑公式| |<strong><em>|</em></strong>| |三段论结论|$
+<span
+class="math inline">||<em>素</em><em>数</em><em>定</em><em>义</em>|</span>prime(x):S0&lt;x
+a b(a &lt; x b&lt; x) (a b =x) <span
+class="math inline">||<em>哥</em><em>德</em><em>巴</em><em>赫</em><em>猜</em><em>想</em>|</span>x
+(SS0 &lt; x y(y =x)) (a,b) (prime(a) prime(b) a+ b=x)$</p>
+<ul>
+<li><em>$x A. <span
+class="math inline"><em>实</em><em>际</em><em>上</em><em>是</em></span>x(x
+A )$的简写</em></li>
+<li><em><span
+class="math inline">∃<em>x</em> ∈ <em>A</em>.<em>α</em></span>是<span
+class="math inline">¬∀<em>x</em> ∈ <em>A</em>.¬<em>α</em></span>的简写。</em>
+***</li>
+</ul>
+<h3 id="替换的语法约束">7. 替换的语法约束</h3>
+<h4 id="约束变元-bound-与自由变元-free">1. 约束变元 (Bound) 与自由变元
+(Free)</h4>
+<p>变量的身份取决于它是否在量词（<span class="math inline">∀</span> 或
+<span class="math inline">∃</span>）的管辖范围内。</p>
+<ul>
+<li><strong>自由变元</strong>：没有被量词“绑死”的变元
+。在原子公式中，所有变元都是自由的 。</li>
+<li><strong>约束变元</strong>：被 <span class="math inline">∀</span> 或
+<span class="math inline">∃</span> 约束的变元
+。在公式中出现的变元如果不是自由出现，就是约束出现 。</li>
+</ul>
+<p><strong>判断规则（递归定义）：</strong> 给定公式 <span
+class="math inline"><em>ϕ</em></span> 和变元 <span
+class="math inline"><em>x</em></span>：</p>
+<ol type="1">
+<li><strong>原子公式</strong> <span
+class="math inline"><em>P</em>(<em>x</em>, <em>y</em>)</span>：<span
+class="math inline"><em>x</em></span> 在其中是自由出现的 。</li>
+<li><strong>否定</strong> <span
+class="math inline">¬<em>ψ</em></span>：如果 <span
+class="math inline"><em>x</em></span> 在 <span
+class="math inline"><em>ψ</em></span> 中自由，在 <span
+class="math inline">¬<em>ψ</em></span> 中也自由 。</li>
+<li><strong>逻辑联结</strong> <span
+class="math inline"><em>ψ</em> * <em>γ</em></span>：<span
+class="math inline"><em>x</em></span> 只要在 <span
+class="math inline"><em>ψ</em></span> 或 <span
+class="math inline"><em>γ</em></span>
+中自由出现，在整个复合公式中就是自由的 。</li>
+<li><strong>量词</strong> <span
+class="math inline">∀<em>y</em><em>ψ</em></span> 或 <span
+class="math inline">∃<em>y</em><em>ψ</em></span>：如果 <span
+class="math inline"><em>x</em></span> 在 <span
+class="math inline"><em>ψ</em></span> 中自由，<strong>且
+x=y</strong>，那么 <span class="math inline"><em>x</em></span>
+在整个量词公式中依然自由 。如果 <span
+class="math inline"><em>x</em> = <em>y</em></span>，那么 <span
+class="math inline"><em>x</em></span> 就被约束了。</li>
+</ol>
+<blockquote>
+<p><strong>实例解析</strong>：<span
+class="math inline">(∀<em>x</em>∀<em>y</em>(<em>P</em>(<em>x</em>, <em>y</em>) ∧ <em>Q</em>(<em>y</em>, <em>z</em>))) ∧ ∃<em>x</em><em>P</em>(<em>x</em>, <em>y</em>)</span></p>
+<ul>
+<li><span class="math inline"><em>z</em></span>：全局自由。</li>
+<li>第一个 <span
+class="math inline"><em>P</em>(<em>x</em>, <em>y</em>)</span> 中的 <span
+class="math inline"><em>x</em>, <em>y</em></span>：被前面的 <span
+class="math inline">∀<em>x</em>∀<em>y</em></span> 约束。</li>
+<li>最后的 <span
+class="math inline"><em>P</em>(<em>x</em>, <em>y</em>)</span> 中的 <span
+class="math inline"><em>y</em></span>：是<strong>自由</strong>的（因为它不在
+<span class="math inline">∀<em>y</em></span> 的管辖括号内），而这个
+<span class="math inline"><em>x</em></span> 被紧挨着的 <span
+class="math inline">∃<em>x</em></span> 约束。</li>
+</ul>
+</blockquote>
+<hr />
+<h4 id="改名-rename">2. 改名 (Rename)</h4>
+<p>为了避免公式变得难以阅读或产生歧义，我们通常将<strong>约束变元</strong>改名为“新鲜
+(fresh) 变元” 。</p>
+<ul>
+<li>例如，将 <span
+class="math inline">(∀<em>x</em>∀<em>y</em>(<em>P</em>(<em>x</em>, <em>y</em>) ∧ <em>Q</em>(<em>y</em>, <em>z</em>))) ∧ ∃<em>x</em><em>P</em>(<em>x</em>, <em>y</em>)</span>
+中的 <span class="math inline">∃<em>x</em></span> 改名为 <span
+class="math inline">∃<em>t</em></span>，变成 <span
+class="math inline">… ∧ ∃<em>t</em><em>P</em>(<em>t</em>, <em>y</em>)</span>
+。这样一眼就能看出前后的变量互不干涉。</li>
+</ul>
+<hr />
+<h4 id="替换-substitution">3. 替换 (Substitution)</h4>
+<p>替换符号 <span
+class="math inline"><em>ϕ</em>[<em>t</em>/<em>x</em>]</span>
+的核心原则是：<strong>只替换公式 ϕ 中所有“自由出现”的
+x</strong>，将其替换为项 <span class="math inline"><em>t</em></span> 。
+&gt; 如果是全局约束其实替换合法但不推荐</p>
+<ul>
+<li><p><strong>原子/否定/联结词</strong>：直接替换 。</p></li>
+<li><p><strong>遇到量词 ∀y 或 ∃y 时</strong>：</p>
+<ul>
+<li>如果 <span
+class="math inline"><em>x</em> = <em>y</em></span>（即碰到了 <span
+class="math inline">∀<em>x</em></span>）：停止替换，保留原样 。因为此时
+<span class="math inline"><em>x</em></span>
+被约束了，不再是自由变元。</li>
+<li>如果 <span
+class="math inline"><em>x</em> ≠ <em>y</em></span>：继续深入到子公式
+<span class="math inline"><em>ψ</em></span> 中进行替换 <span
+class="math inline"><em>ψ</em>[<em>t</em>/<em>x</em>]</span> 。</li>
+</ul></li>
+</ul>
+<hr />
+<h4 id="核心难点无冲突替换-free-for-x-in-ϕ">4. 核心难点：无冲突替换
+(Free for x in ϕ)</h4>
+<p>替换引入的致命错误叫做<strong>变量捕获 (Variable
+Capture)</strong>。</p>
+<p><strong>错误动机演示：</strong> 假设有公式 <span
+class="math inline"><em>ϕ</em> : ∃<em>y</em> <em>y</em> ≠ <em>x</em></span>。我们将
+<span class="math inline"><em>x</em></span> 替换为不同的项 ：</p>
+<ul>
+<li>安全替换 <span
+class="math inline"><em>ϕ</em>[<em>z</em>/<em>x</em>]</span>：变成 <span
+class="math inline">∃<em>y</em> <em>y</em> ≠ <em>z</em></span>。（逻辑正常）</li>
+<li><strong>冲突替换</strong> <span
+class="math inline"><em>ϕ</em>[<em>y</em>/<em>x</em>]</span>：变成 <span
+class="math inline">∃<em>y</em> <em>y</em> ≠ <em>y</em></span>。（逻辑崩塌，永远为假）</li>
+</ul>
+<p><strong>“坏情况”的本质</strong>：你要替换进去的项 <span
+class="math inline"><em>t</em></span> 中包含了一个自由变元（比如 <span
+class="math inline"><em>y</em></span>），而在替换进去之后，这个变元不幸落入了一个同名量词（<span
+class="math inline">∀<em>y</em></span> 或 <span
+class="math inline">∃<em>y</em></span>）的管辖范围内，<strong>从自由变元变成了约束变元</strong>
+。</p>
+<p><strong>如何保证无冲突替换？</strong> 项 <span
+class="math inline"><em>t</em></span> 在公式 <span
+class="math inline"><em>ϕ</em></span> 中可以无冲突地替换 <span
+class="math inline"><em>x</em></span>，当且仅当满足： 对于 <span
+class="math inline"><em>ϕ</em> = ∀<em>y</em><em>ψ</em></span> 或 <span
+class="math inline">∃<em>y</em><em>ψ</em></span> ：</p>
+<ol type="1">
+<li><strong>根本不需要换</strong>：<span
+class="math inline"><em>x</em></span> 在量词公式中本来就没有自由出现
+。</li>
+<li><strong>换了也安全</strong>：<span
+class="math inline"><em>y</em></span> 没有在项 <span
+class="math inline"><em>t</em></span>
+中出现（不会被捕获），<strong>并且</strong> <span
+class="math inline"><em>t</em></span> 可以在内部子公式 <span
+class="math inline"><em>ψ</em></span> 中无冲突地替换 <span
+class="math inline"><em>x</em></span> 。</li>
+</ol>
+<ul>
+<li>例子：<span
+class="math inline"><em>α</em> : ∀<em>x</em> (<em>P</em>(<em>x</em>) → ∃<em>y</em> <em>Q</em>(<em>x</em>, <em>y</em>)) → (∃<em>z</em> <em>R</em>(<em>x</em>, <em>y</em>, <em>z</em>))</span></li>
+</ul>
+<p><span
+class="math display"><em>α</em>[<em>y</em>/<em>x</em>] = ∀<em>x</em>(<em>P</em>(<em>x</em>) → ∃<em>y</em> <em>Q</em>(<em>x</em>, <em>y</em>)) → (∃<em>z</em> <em>R</em>(<em>y</em>, <em>y</em>, <em>z</em>))</span></p>
+<p><strong>这个替换合法，因为这里只考虑语法，语义看似变了，但替换的目的通常是为了实例化，把
+<span class="math inline"><em>x</em></span> 换成 <span
+class="math inline"><em>y</em></span>，在语义上相当于你在讨论一种特殊情况</strong></p>
+<hr />
+<h2 id="二语义">二、语义</h2>
+<h3 id="语义的核心解释与模型-interpretations-and-models">1.
+语义的核心：解释与模型 (Interpretations and Models)</h3>
+<p>在命题逻辑中，语义就是给命题变元赋真假值。但在谓词逻辑中，由于有了个体、函数和谓词，我们需要一个更复杂的“翻译字典”，即<strong>模型（Model）或结构（Structure）</strong>
+<span class="math inline">ℳ</span>。</p>
+<p>一个模型 <span class="math inline">ℳ</span> 由两部分组成：</p>
+<ol type="1">
+<li><p><strong>论域 (Domain/Universe,
+D)</strong>：一个非空的集合，代表我们讨论的所有个体的范围（如：自然数集、所有人的集合）。</p></li>
+<li><p><strong>解释函数 (I)</strong>：</p>
+<ul>
+<li>将每个<strong>常数符号</strong> <span
+class="math inline"><em>c</em></span> 映射到论域中的一个具体元素 <span
+class="math inline"><em>c</em><sup>ℳ</sup> ∈ <em>D</em></span>。</li>
+<li>将每个<strong><span class="math inline"><em>n</em></span>
+元函数符号</strong> <span class="math inline"><em>f</em></span> 映射到
+<span class="math inline"><em>D</em></span> 上的一个具体运算 <span
+class="math inline"><em>f</em><sup>ℳ</sup> : <em>D</em><sup><em>n</em></sup> → <em>D</em></span>。</li>
+<li>将每个<strong><span class="math inline"><em>n</em></span>
+元谓词符号</strong> <span class="math inline"><em>P</em></span> 映射到
+<span class="math inline"><em>D</em><sup><em>n</em></sup></span>
+的一个子集（即哪些个体满足这个关系）。</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="环境赋值-environmentassignment-s">2. 环境/赋值
+(Environment/Assignment, s)</h3>
+<p>公式中可能含有<strong>自由变元</strong>（如 <span
+class="math inline"><em>x</em></span>）。模型 <span
+class="math inline">ℳ</span>
+只能解释常数，不能解释变元。因此需要一个辅助工具：</p>
+<ul>
+<li><strong>赋值 s</strong>：一个将所有变元映射到论域 <span
+class="math inline"><em>D</em></span> 中元素的函数。</li>
+<li><strong>注意</strong>：语义的定义是相对于 <span
+class="math inline">(ℳ, <em>s</em>)</span> 对而言的。</li>
+</ul>
+<hr />
+<h3 id="项的语义-evaluation-of-terms">3. 项的语义 (Evaluation of
+Terms)</h3>
+<p>项（Term）的语义结果永远是一个<strong>论域中的个体</strong>。</p>
+<ul>
+<li>变元 <span class="math inline"><em>x</em></span> 的值由赋值 <span
+class="math inline"><em>s</em>(<em>x</em>)</span> 决定。</li>
+<li>函数项 <span
+class="math inline"><em>f</em>(<em>t</em><sub>1</sub>, …, <em>t</em><sub><em>n</em></sub>)</span>
+的值由该函数在模型中的实际运算结果决定。</li>
+</ul>
+<hr />
+<h3 id="公式的语义-satisfaction-relation">4. 公式的语义 (Satisfaction
+Relation, ⊨)</h3>
+<p>这是最关键的部分，定义了在模型 <span class="math inline">ℳ</span>
+和赋值 <span class="math inline"><em>s</em></span> 下，公式 <span
+class="math inline"><em>ϕ</em></span> 是否为真（记作 <span
+class="math inline">ℳ</span>, <span
+class="math inline"><em>s</em> ⊨ <em>ϕ</em></span>）。</p>
+<ul>
+<li><p><strong>原子公式</strong>：<span
+class="math inline"><em>P</em>(<em>t</em><sub>1</sub>, …, <em>t</em><sub><em>n</em></sub>)</span>
+为真，当且仅当项的求值结果构成的序列在谓词 <span
+class="math inline"><em>P</em></span> 的解释集合中。</p></li>
+<li><p><strong>逻辑联结词</strong>：遵循命题逻辑的真值表（<span
+class="math inline">¬,∧, ∨, →</span>）。</p></li>
+<li><p><strong>量词（语义的难点）</strong>：</p>
+<ul>
+<li><strong>∀xϕ 为真</strong>：意味着无论你把变元 <span
+class="math inline"><em>x</em></span> 临时指派为论域 <span
+class="math inline"><em>D</em></span>
+中的<strong>任何一个</strong>元素，内部公式 <span
+class="math inline"><em>ϕ</em></span> 都必须成立。</li>
+<li><strong>∃xϕ 为真</strong>：意味着在论域 <span
+class="math inline"><em>D</em></span>
+中<strong>至少能找到一个</strong>元素指派给 <span
+class="math inline"><em>x</em></span>，使得内部公式 <span
+class="math inline"><em>ϕ</em></span> 成立。</li>
+</ul></li>
+</ul>
+<hr />
+<p>即<strong>模型定死背景，赋值定死变元，项算出个体，谓词决定初级真假，量词通过遍历论域决定最终生死</strong></p>
+<pre><code class=" mermaid">graph TD
+    subgraph &quot;输入层 (符号系统 Syntax)&quot;
+        S1[常数符号 c, 函数符号 f]
+        S2[变量符号 x, y]
+        S3[谓词符号 P, Q]
+        S4[量词 ∀/∃ 与 联结词 ¬/∧/∨/→]
+    end
+
+    subgraph &quot;中间层 (语义解释 Semantics)&quot;
+        M1[&quot;模型 M = (D, I) &lt;br/&gt; D: 论域 (物体集合) &lt;br/&gt; I: 符号到现实的映射&quot;]
+        M2[&quot;赋值 s &lt;br/&gt; (将变量映射到 D 中的具体元素)&quot;]
+    end
+
+    subgraph &quot;执行层 (求值过程)&quot;
+        E1[&quot;项的求值 (Evaluation) &lt;br/&gt; 将 t 转化为 D 中的元素 [[t]]&quot;]
+        E2[&quot;原子公式判别 &lt;br/&gt; 检查 [[t]] 是否满足 I(P) 的关系&quot;]
+        E3[&quot;逻辑运算与量词展开 &lt;br/&gt; (如：∀x 需要检查 D 中所有元素)&quot;]
+    end
+
+    S1 --&gt; M1
+    S2 --&gt; M2
+    M1 &amp; M2 --&gt; E1
+    E1 --&gt; E2
+    S3 --&gt; E2
+    E2 --&gt; E3
+    S4 --&gt; E3
+
+    E3 --&gt; Result[&quot;最终真值 (True / False)&quot;]
+</code></pre>
+<h3 id="语义的重要概念">5. 语义的重要概念</h3>
+<ol type="1">
+<li><strong>可满足的
+(Satisfiable)</strong>：如果<strong>至少存在</strong>一个模型和一种赋值使得公式为真。</li>
+<li><strong>普遍有效
+(Valid/Tautology)</strong>：如果在<strong>所有可能的</strong>模型和<strong>所有可能的</strong>赋值下都为真，记作
+<span class="math inline"> ⊨ <em>ϕ</em></span>。</li>
+<li><strong>矛盾的 (Unsatisfiable)</strong>：在任何模型下都不为真。</li>
+<li><strong>语义蕴含 (Logical Entailment, Σ⊨ϕ)</strong>：如果任何使集合
+<span class="math inline"><em>Σ</em></span>
+中所有公式都为真的模型，也能使 <span
+class="math inline"><em>ϕ</em></span> 为真，记作 <span
+class="math inline"><em>Σ</em> ⊨ <em>ϕ</em></span>。</li>
+<li><strong>语义等价 (Logical Equivalence, ϕ ≡ ψ)</strong>： <span
+class="math inline"><em>ϕ</em></span> 和 <span
+class="math inline"><em>ψ</em></span>
+在所有模型和赋值下具有相同的真值，即<span
+class="math inline"><em>α</em> ⊨ <em>β</em><em>β</em> ⊨ <em>α</em></span>，记作
+<span class="math inline"><em>ϕ</em> ≡ <em>ψ</em></span>。</li>
+</ol>
+<hr />
+<h3 id="补充量词相关的常用等价式-common-semantic-equivalences">6.
+补充：量词相关的常用等价式 (Common Semantic Equivalences)</h3>
+<ul>
+<li><p><strong>量词否定移位</strong>：</p>
+<ul>
+<li><span
+class="math inline">¬∀<em>x</em><em>ϕ</em> ≡ ∃<em>x</em>¬<em>ϕ</em></span></li>
+<li><span
+class="math inline">¬∃<em>x</em><em>ϕ</em> ≡ ∀<em>x</em>¬<em>ϕ</em></span></li>
+</ul></li>
+<li><p><strong>量词分配律（注意条件限制）</strong>：</p>
+<ul>
+<li><span
+class="math inline">∀<em>x</em>(<em>ϕ</em> ∧ <em>ψ</em>) ≡ ∀<em>x</em><em>ϕ</em> ∧ ∀<em>x</em><em>ψ</em></span>
+（对 <span class="math inline">∧</span> 可分配）</li>
+<li><span
+class="math inline">∃<em>x</em>(<em>ϕ</em> ∨ <em>ψ</em>) ≡ ∃<em>x</em><em>ϕ</em> ∨ ∃<em>x</em><em>ψ</em></span>
+（对 <span class="math inline">∨</span> 可分配）</li>
+<li><strong>注意</strong>：<span
+class="math inline">∀<em>x</em>(<em>ϕ</em> ∨ <em>ψ</em>)</span>
+<strong>不等于</strong> <span
+class="math inline">∀<em>x</em><em>ϕ</em> ∨ ∀<em>x</em><em>ψ</em></span>。</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="三语法自然推理系统">三、语法：自然推理系统</h2>
+<h3 id="全称量词">1. 全称量词</h3>
+<h4 id="全称量词消去规则--elim">全称量词消去规则 (∀-elim)</h4>
+<p><strong>直观理解：</strong> “既然对所有人（<span
+class="math inline">∀<em>x</em></span>）都成立，那么对某个特定的人（<span
+class="math inline"><em>t</em></span>）也一定成立。”</p>
+<p><span class="math display">$$
+\frac{\forall x \alpha}{\alpha[t/x]} \quad (\forall\text{-elim} /
+\forall e)
+$$</span></p>
+<ul>
+<li><strong>使用条件：</strong> 项 <span
+class="math inline"><em>t</em></span> 在公式 <span
+class="math inline"><em>α</em></span> 中对变量 <span
+class="math inline"><em>x</em></span> 是<strong>自由的</strong>（free
+for）,也就是说t中的变元不能被<span
+class="math inline"><em>α</em></span>的量词约束到。</li>
+<li><strong>注意：</strong> 这是最简单的“代入”过程，把 <span
+class="math inline"><em>α</em></span> 里的 <span
+class="math inline"><em>x</em></span> 全换成 <span
+class="math inline"><em>t</em></span> 即可。</li>
+</ul>
+<hr />
+<h4 id="全称量词引入规则--intro">全称量词引入规则 (∀-intro)</h4>
+<p><strong>直观理解：</strong> “如果你能证明性质 <span
+class="math inline"><em>α</em></span>
+对一个<strong>随机挑选且没有任何背景</strong>的人（新鲜变元 <span
+class="math inline"><em>x</em><sub>0</sub></span>）成立，那么它对所有人（<span
+class="math inline">∀<em>x</em></span>）都成立。”</p>
+<p><span class="math display">$$
+\frac{
+\begin{array}{c}
+[x_0] \\
+\vdots \\
+\alpha[x_0/x]
+\end{array}
+}{\forall x \alpha} \quad (\forall\text{-intro} / \forall i)
+$$</span></p>
+<ul>
+<li><p><strong>使用条件（核心）：</strong> <span
+class="math inline"><em>x</em><sub>0</sub></span>
+必须是一个<strong>新鲜变元（Fresh variable）</strong>。</p>
+<ul>
+<li><span class="math inline"><em>x</em><sub>0</sub></span>
+不能出现在当前的假设（assumptions）中。</li>
+<li><span class="math inline"><em>x</em><sub>0</sub></span>
+不能出现在最终结论 <span
+class="math inline">∀<em>x</em><em>α</em></span> 中。</li>
+</ul></li>
+<li><p><strong>操作过程：</strong>
+先开启一个框（或临时作用域），在这个框里引入一个全新的名字 <span
+class="math inline"><em>x</em><sub>0</sub></span>，证明出结论后，再“收网”加上
+<span class="math inline">∀<em>x</em></span>。</p></li>
+</ul>
+<hr />
+<h3 id="存在量词">2. 存在量词</h3>
+<h4 id="存在量词引入规则--intro">存在量词引入规则 (∃-intro)</h4>
+<p><strong>直观理解：</strong> “只要你能举出一个具体的证据（项 <span
+class="math inline"><em>t</em></span>）满足性质 <span
+class="math inline"><em>α</em></span>，你就能断定‘存在某个人’（<span
+class="math inline">∃<em>x</em></span>）满足该性质。”</p>
+<p><span class="math display">$$
+\frac{\alpha[t/x]}{\exists x \alpha} \quad (\exists\text{-intro} /
+\exists i)
+$$</span></p>
+<ul>
+<li><strong>使用条件：</strong> 项 <span
+class="math inline"><em>t</em></span> 在公式 <span
+class="math inline"><em>α</em></span> 中对变量 <span
+class="math inline"><em>x</em></span> 是<strong>自由的</strong>（free
+for）。</li>
+<li><strong>注意：</strong>
+这对应数学证明中的“构造法”，只要给出一个例子即可。</li>
+</ul>
+<hr />
+<h4 id="存在量词消去规则--elim">存在量词消去规则 (∃-elim)</h4>
+<p><strong>直观理解：</strong> “已知‘存在某个人’满足 <span
+class="math inline"><em>α</em></span>，我们先给这个‘神秘人’取个临时代号叫
+<span
+class="math inline"><em>x</em><sub>0</sub></span>。如果基于这个代号能推出结论
+<span class="math inline"><em>β</em></span>，且 <span
+class="math inline"><em>β</em></span> 跟这个代号本身没关系，那么 <span
+class="math inline"><em>β</em></span> 独立成立。”</p>
+<p><span class="math display">$$
+\frac{
+\exists x \alpha \quad
+\begin{array}{|c|}
+\hline
+[x_0], \alpha[x_0/x] \\
+\vdots \\
+\beta \\
+\hline
+\end{array}
+}{\beta} \quad (\exists\text{-elim} / \exists e)
+$$</span></p>
+<ul>
+<li><p><strong>使用条件（最严格）：</strong></p>
+<ol type="1">
+<li><span class="math inline"><em>x</em><sub>0</sub></span>
+是<strong>新鲜的</strong>，不出现在 <span
+class="math inline">∃<em>x</em><em>α</em></span> 之外的假设中。</li>
+<li><span class="math inline"><em>x</em><sub>0</sub></span>
+<strong>绝对不能出现在最终结论 β
+中</strong>（你不能把临时工的名字带出实验室）。</li>
+</ol></li>
+<li><p><strong>操作过程：</strong> 看到 <span
+class="math inline">∃</span>，先“假设”那个存在的东西叫 <span
+class="math inline"><em>x</em><sub>0</sub></span>，在这个假设下做推导，最后得到的结论必须和
+<span class="math inline"><em>x</em><sub>0</sub></span> 无关。</p></li>
+</ul>
+<hr />
+<p>证明：<span
+class="math inline">∃<em>x</em><em>P</em>(<em>x</em>), ∀<em>x</em>∀<em>y</em>(<em>P</em>(<em>x</em>) → <em>Q</em>(<em>y</em>)) ⊢ ∀<em>y</em><em>Q</em>(<em>y</em>)</span></p>
+<figure>
+<img src="/img/image.png" srcset="/img/loading.gif" lazyload alt="演示" />
+<figcaption aria-hidden="true">演示</figcaption>
+</figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">离散数学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91/" class="print-no-link">#谓词逻辑</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="print-no-link">#学习笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>离散数学：谓词逻辑</div>
+      <div>http://example.com/2026/03/28/pro_logic_2_谓词逻辑/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 28, 2026</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/03/28/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
